@@ -50,7 +50,12 @@ class PhinxApplication extends Application
     public function __construct()
     {
         $composerConfig = json_decode(file_get_contents(__DIR__ . '/../../../composer.json'));
-        $version = $composerConfig->version;
+
+        if (!empty($composerConfig->version)) {
+            $version = $composerConfig->version;
+        } else {
+            $version = '?';
+        }
 
         parent::__construct('Phinx by CakePHP - https://phinx.org.', $version);
 
