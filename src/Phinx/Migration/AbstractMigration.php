@@ -73,6 +73,13 @@ abstract class AbstractMigration implements MigrationInterface
     protected $isMigratingUp = true;
 
     /**
+     * SPECIFIC CHANGE
+     *
+     * @var bool
+     */
+    protected $skipDuringBuild = false;
+
+    /**
      * Class Constructor.
      *
      * @param int $version Migration Version
@@ -299,4 +306,24 @@ abstract class AbstractMigration implements MigrationInterface
     {
         $this->table($tableName)->drop();
     }
+
+    public function ignoreDuringPush()
+    {
+        $this->setSkipDuringBuild(true);
+    }
+
+    public function setSkipDuringBuild($skip)
+    {
+        $this->skipDuringBuild = $skip;
+    }
+
+    public function shouldSkipOnPush()
+    {
+        $testEnvVar = getenv('PHINX_BUILD_PROCESS');
+        if (empty($testEnvVar)) {
+            return false;
+        }
+        return (bool)$this->skipDuringBuild;
+    }
+
 }

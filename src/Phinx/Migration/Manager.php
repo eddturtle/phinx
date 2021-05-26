@@ -348,6 +348,16 @@ class Manager
             }
 
             if (!in_array($migration->getVersion(), $versions)) {
+
+                if ($migration->shouldSkipOnPush()) {
+                    $this->getOutput()->writeln(
+                        ' ==' .
+                        ' <info>' . $migration->getVersion() . ' ' . $migration->getName() . ':</info>' .
+                        ' <comment>Skipping Migration - Pushing...</comment>'
+                    );
+                    continue;
+                }
+
                 $this->executeMigration($environment, $migration, MigrationInterface::UP);
             }
         }
