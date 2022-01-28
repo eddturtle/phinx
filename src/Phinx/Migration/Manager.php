@@ -431,7 +431,7 @@ class Manager
      * @param bool $targetMustMatchVersion
      * @return void
      */
-    public function rollback($environment, $target = null, $force = false, $targetMustMatchVersion = true)
+    public function rollback($environment, $target = null, $force = false, $targetMustMatchVersion = true, $single = '')
     {
         // note that the migrations are indexed by name (aka creation time) in ascending order
         $migrations = $this->getMigrations();
@@ -504,6 +504,15 @@ class Manager
         $rollbacked = false;
 
         foreach ($sortedMigrations as $migration) {
+
+            if (!empty($single)) {
+                if ($migration->getName() === $single) {
+                    $this->executeMigration($environment, $migration, MigrationInterface::DOWN);
+                    $rollbacked = true;
+                }
+                continue;
+            }
+
             if ($targetMustMatchVersion && $migration->getVersion() == $target) {
                 break;
             }

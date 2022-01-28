@@ -47,6 +47,7 @@ class Rollback extends AbstractCommand
             ->setDescription('Rollback the last or to a specific migration')
             ->addOption('--target', '-t', InputOption::VALUE_REQUIRED, 'The version number to rollback to')
             ->addOption('--date', '-d', InputOption::VALUE_REQUIRED, 'The date to rollback to')
+            ->addOption('--single', '-s', InputOption::VALUE_REQUIRED, 'The rollback a single migration')
             ->addOption('--force', '-f', InputOption::VALUE_NONE, 'Force rollback to ignore breakpoints')
             ->addOption('--dry-run', '-x', InputOption::VALUE_NONE, 'Dump query to standard output instead of executing it')
             ->setHelp(
@@ -84,6 +85,7 @@ EOT
         $environment = $input->getOption('environment');
         $version = $input->getOption('target');
         $date = $input->getOption('date');
+        $single = $input->getOption('single');
         $force = (bool)$input->getOption('force');
 
         $config = $this->getConfig();
@@ -121,7 +123,7 @@ EOT
         }
 
         $start = microtime(true);
-        $this->getManager()->rollback($environment, $target, $force, $targetMustMatchVersion);
+        $this->getManager()->rollback($environment, $target, $force, $targetMustMatchVersion, $single);
         $end = microtime(true);
 
         $output->writeln('');
