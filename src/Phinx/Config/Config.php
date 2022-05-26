@@ -351,7 +351,7 @@ class Config implements ConfigInterface, NamespaceAwareInterface
         // $_ENV is empty because variables_order does not include it normally
         $tokens = [];
         foreach ($_SERVER as $varname => $varvalue) {
-            if (0 === strpos($varname, 'PHINX_')) {
+            if (0 === strpos($varname, 'PHINX_') || 0 === strpos($varname, 'DB_')) {
                 $tokens['%%' . $varname . '%%'] = $varvalue;
             }
         }
