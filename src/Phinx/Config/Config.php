@@ -347,6 +347,13 @@ class Config implements ConfigInterface, NamespaceAwareInterface
      */
     protected function replaceTokens(array $arr)
     {
+        $reflection = new \ReflectionClass(\Composer\Autoload\ClassLoader::class);
+        $projectDIR = dirname($reflection->getFileName(), 2);
+        if (file_exists($projectDIR . '/.env')) {
+            $dotenv = \Dotenv\Dotenv::createImmutable($projectDIR);
+            $dotenv->safeLoad();
+        }
+
         // Get environment variables
         // $_ENV is empty because variables_order does not include it normally
         $tokens = [];
