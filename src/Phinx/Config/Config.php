@@ -350,8 +350,8 @@ class Config implements ConfigInterface, NamespaceAwareInterface
         $reflection = new \ReflectionClass(\Composer\Autoload\ClassLoader::class);
         $projectDIR = dirname($reflection->getFileName(), 2);
         if (file_exists($projectDIR . '/.env')) {
-            $dotenv = \Dotenv\Dotenv::createImmutable($projectDIR);
-            $dotenv->safeLoad();
+            $dotenv = \Dotenv\Dotenv::create($projectDIR);
+            $dotenv->load();
         }
 
         // Get environment variables
