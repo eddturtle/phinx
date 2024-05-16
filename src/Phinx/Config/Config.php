@@ -402,6 +402,7 @@ class Config implements ConfigInterface, NamespaceAwareInterface
     /**
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($id, $value)
     {
         $this->values[$id] = $value;
@@ -410,6 +411,7 @@ class Config implements ConfigInterface, NamespaceAwareInterface
     /**
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($id)
     {
         if (!array_key_exists($id, $this->values)) {
@@ -422,6 +424,7 @@ class Config implements ConfigInterface, NamespaceAwareInterface
     /**
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($id)
     {
         return isset($this->values[$id]);
@@ -430,6 +433,7 @@ class Config implements ConfigInterface, NamespaceAwareInterface
     /**
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($id)
     {
         unset($this->values[$id]);
