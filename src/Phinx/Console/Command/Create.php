@@ -146,7 +146,7 @@ class Create extends AbstractCommand
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      * @throws \RuntimeException
      * @throws \InvalidArgumentException
-     * @return void
+     * @return int
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -310,5 +310,7 @@ class Create extends AbstractCommand
         }
 
         $output->writeln('<info>created</info> ' . str_replace(getcwd() . DIRECTORY_SEPARATOR, '', $filePath));
+
+        return 0;
     }
 }
