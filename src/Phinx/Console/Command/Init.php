@@ -57,7 +57,7 @@ class Init extends Command
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      * @throws \RuntimeException
      * @throws \InvalidArgumentException
-     * @return void
+     * @return int
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -103,5 +103,7 @@ class Init extends Command
         }
 
         $output->writeln('<info>created</info> .' . str_replace(getcwd(), '', $filePath));
+
+        return 0;
     }
 }
