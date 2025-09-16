@@ -81,7 +81,7 @@ class Table
      * @param array $options Options
      * @param \Phinx\Db\Adapter\AdapterInterface $adapter Database Adapter
      */
-    public function __construct($name, $options = [], AdapterInterface $adapter = null)
+    public function __construct($name, $options = [], ?AdapterInterface $adapter = null)
     {
         $this->setName($name);
         $this->setOptions($options);

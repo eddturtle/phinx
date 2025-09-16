@@ -49,7 +49,7 @@ abstract class AbstractTemplateCreation implements CreationInterface
      * @param \Symfony\Component\Console\Input\InputInterface|null  $input
      * @param \Symfony\Component\Console\Output\OutputInterface|null $output
      */
-    public function __construct(InputInterface $input = null, OutputInterface $output = null)
+    public function __construct(?InputInterface $input = null, ?OutputInterface $output = null)
     {
         if (!is_null($input)) {
             $this->setInput($input);

@@ -66,7 +66,7 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param \Symfony\Component\Console\Input\InputInterface $input Input Interface
      * @param \Symfony\Component\Console\Output\OutputInterface  $output Output Interface
      */
-    public function __construct(array $options, InputInterface $input = null, OutputInterface $output = null)
+    public function __construct(array $options, ?InputInterface $input = null, ?OutputInterface $output = null)
     {
         $this->setOptions($options);
         if ($input !== null) {
