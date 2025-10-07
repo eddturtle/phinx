@@ -59,7 +59,7 @@ class Init extends Command
      * @throws \InvalidArgumentException
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         // get the migration path from the config
         $path = $input->getArgument('path');

@@ -9,7 +9,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class InitTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $file = sys_get_temp_dir() . '/phinx.yml';
         if (is_file($file)) {

@@ -65,7 +65,7 @@ EOT
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      * @return int 0 if all migrations are up, or an error code
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->bootstrap($input, $output);
 

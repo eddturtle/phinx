@@ -37,7 +37,7 @@ class StatusTest extends TestCase
      */
     const DEFAULT_TEST_ENVIRONMENT = 'development';
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->config = new Config([
             'paths' => [

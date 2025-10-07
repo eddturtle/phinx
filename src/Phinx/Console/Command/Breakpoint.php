@@ -68,7 +68,7 @@ EOT
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      * @return void
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->bootstrap($input, $output);
 

@@ -32,7 +32,7 @@ class MigrateTest extends TestCase
      */
     protected $output;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->config = new Config([
             'paths' => [

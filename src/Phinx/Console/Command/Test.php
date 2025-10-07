@@ -70,7 +70,7 @@ EOT
      * @throws \InvalidArgumentException
      * @return void
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->loadConfig($input, $output);
         $this->loadManager($input, $output);

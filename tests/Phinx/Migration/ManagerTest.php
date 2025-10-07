@@ -31,7 +31,7 @@ class ManagerTest extends TestCase
      */
     private $manager;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->config = new Config($this->getConfigArray());
         $this->input = new ArrayInput([]);
@@ -80,7 +80,7 @@ class ManagerTest extends TestCase
         return $config;
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->manager = null;
     }
@@ -5730,7 +5730,7 @@ class ManagerTest extends TestCase
  */
 class RawBufferedOutput extends \Symfony\Component\Console\Output\BufferedOutput
 {
-    public function writeln($messages, $options = self::OUTPUT_RAW)
+    public function writeln($messages, int $options = self::OUTPUT_NORMAL): void
     {
         $this->write($messages, true, $options);
     }
